@@ -33,7 +33,7 @@ logger = logging.getLogger(__name__)
 # Pinned upstream version.  Bump in a follow-up PR — never auto-resolve
 # "latest" because upstream release shape (asset names, CLI flags) is allowed
 # to change between majors and we want updates to be deliberate.
-_PASS_CLI_VERSION = "2.1.1"
+_PASS_CLI_VERSION = "2.3.3"
 
 # Pinned per-asset SHA-256 digests for _PASS_CLI_VERSION (lowercase hex, no
 # algo prefix), taken from proton.me/download/pass-cli/versions.json.
@@ -42,11 +42,11 @@ _PASS_CLI_VERSION = "2.1.1"
 # move together.  Because the version is pinned the digests are constants, so
 # there is no manifest fetch / recursive walk at runtime.
 _PINNED_SHA256 = {
-    "pass-cli-macos-aarch64": "787b107dbfb759502460cac361724e2862d5082025fc02e902f436a92df050a9",
-    "pass-cli-macos-x86_64": "a23b7781578d0220d655f745b40e89abf5b0a8cd3fa3537f2ec080c747abb8af",
-    "pass-cli-linux-aarch64": "d76579e5191ea4a56d8e254898c9c6c5242a7f3a3a5204dccb88f34409e4c9fb",
-    "pass-cli-linux-x86_64": "97eeed17907674cfde7b397157f14f3ae0d1391c82732062971f4b1333559a8f",
-    "pass-cli-windows-x86_64.zip": "42379f09ca606d9b6da851dbf6cba73482bded52b8cd8771defd72a1be443a0c",
+    "pass-cli-macos-aarch64": "3281587ac9c50ae2f1604ba75e9d1d39b6debb221b65a6cc56f64d626ede3dbc",
+    "pass-cli-macos-x86_64": "275f6159f63d152ecdd9d4e2969ef515291619005e0d30ab762daee26081621c",
+    "pass-cli-linux-aarch64": "9c3e85e10d3bb631ffe377f063d996b9cc9a545d30971bcedf5910e16d03542b",
+    "pass-cli-linux-x86_64": "b5b49a8b3fd0af8830c0c1979f28ea0c90ccece73f59023a8bca8245d4b68da9",
+    "pass-cli-windows-x86_64.zip": "4169c7644e3475f294d265e2f1262476573e41d372b905187222c52f1c6dbca5",
 }
 
 # Assets live under the versioned download path.
@@ -424,7 +424,7 @@ def _platform_asset_name() -> str:
     if system == "Linux" and arch is not None:
         return f"pass-cli-linux-{arch}"
 
-    # Windows: Proton publishes ONLY the x86_64 zip at 2.1.1.  Windows-on-ARM64
+    # Windows: Proton publishes ONLY the x86_64 zip at 2.3.3.  Windows-on-ARM64
     # runs x64 binaries transparently via the OS x64-emulation layer, so we
     # deliberately map BOTH x86_64 and aarch64 to the x86_64 zip (the documented
     # ARM64-via-x64-emulation exception).  Crucially we gate on a KNOWN arch: an

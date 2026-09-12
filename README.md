@@ -18,10 +18,16 @@ precedence rule:
 processes receive a minimal environment, secret-bearing output is never echoed,
 and fetch failures never prevent Hermes from starting.
 
+This fork pins Proton Pass CLI **2.3.3**, using all five asset checksums from
+the [official Proton manifest](https://proton.me/download/pass-cli/versions.json).
+The upstream 2.1.1 pins reject a genuine 2.3.3 binary even with
+`auto_install: false`: SHA-256 verification also applies to binaries on PATH.
+This fork updates the pins without weakening that verification.
+
 ## Install from GitHub
 
 ```bash
-hermes plugins install flamerged/hermes-protonpass-plugin --enable
+hermes plugins install slvnlrt/hermes-protonpass-plugin --enable
 hermes protonpass setup
 ```
 
