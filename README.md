@@ -24,6 +24,11 @@ The upstream 2.1.1 pins reject a genuine 2.3.3 binary even with
 `auto_install: false`: SHA-256 verification also applies to binaries on PATH.
 This fork updates the pins without weakening that verification.
 
+The package metadata supports Hermes Agent **0.18.2 through 0.22.x** and
+Python **3.11 through 3.14**. The plugin uses the stable `SecretSource`
+contract across that range; release-specific compatibility is exercised before
+raising either upper bound.
+
 ## Install from GitHub
 
 ```bash
